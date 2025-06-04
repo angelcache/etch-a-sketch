@@ -2,6 +2,12 @@
   font-family: "Gamja Flower", Arial;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   display: flex;
   flex-wrap: wrap;
@@ -10,7 +16,6 @@ body {
   align-items: center;
   position: relative;
   overflow-x: hidden;
-  min-height: 100vh;
   background: var(--background-color);
   background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
   background-repeat: repeat;
