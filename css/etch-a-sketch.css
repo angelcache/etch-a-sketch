@@ -4,10 +4,23 @@
 
 body {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 100px;
   align-items: center;
-  background-color: var(--background-color);
+  position: relative;
+  overflow-x: hidden;
+  background: var(--background-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  background-repeat: repeat;
+}
+
+.github-icon {
+  position: absolute;
+  width: 40px;
+  height: auto;
+  top: 10px;
+  right: 10px;
 }
 
 #canvas {
@@ -60,21 +73,47 @@ body {
 .reset-button {
   width: 200px;
   font-size: 40px;
-  color: white;
+  color: var(--default-color);
   background-color: transparent;
   border: none;
   white-space: nowrap;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nature-button:hover,
+.reset-button:hover {
+  color: var(--background-color);
+}
+
+.random-button:hover {
+  background: linear-gradient(
+    90deg,
+    #ffadad,
+    #ffd6a5,
+    #fdffb6,
+    #caffbf,
+    #9bf6ff,
+    #bdb2ff,
+    #ffc6ff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
 }
 
 .change-input {
   border: none;
   text-align: center;
+  color: var(--background-color);
   border-radius: 20px;
   font-size: 16px;
-  padding: 0;
+  padding: 5px 0;
   width: 120px;
+  height: 20px;
   resize: none;
+  outline: none;
 }
 
 .change-option {
@@ -84,7 +123,7 @@ body {
 }
 
 .change-button {
-  color: white;
+  color: var(--default-color);
   width: 160px;
   text-align: center;
   font-size: 25px;
@@ -92,9 +131,11 @@ body {
   border: none;
   border-radius: 20px;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .change-message {
+  color: var(--title-color);
   padding: 0;
 }
 

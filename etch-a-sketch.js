@@ -2,7 +2,7 @@ const canvasContainer = document.querySelector(".canvas-container");
 const canvasWidth = canvasContainer.offsetWidth;
 const canvasHeight = canvasContainer.offsetHeight;
 let pixels = [];
-let pixelColor = 'black';
+let pixelColor = '#FFE9CE';
 let pixelMode = 'color';
 let clicked = false;
 
@@ -66,9 +66,9 @@ function callButtonListeners() {
   changeSizeButton.addEventListener('click', () => {
     let newSize = parseInt(inputSize.value);
     if (!newSize) {
-      changeMessage.innerText = "Size be a number";
+      changeMessage.innerText = "Size must be a number!";
     } else if (newSize < 0 || newSize > 100) {
-      changeMessage.innerText = "Size must be between 0-100 pixels"
+      changeMessage.innerText = "Size must be between 0-100 pixels."
     } else {
       changeMessage.innerText = "";
       setCanvasSize(newSize);
@@ -110,6 +110,25 @@ function setPixelColor(pixel) {
   pixel.style.backgroundColor = pixelColor;
 }
 
+function setPixelNature(pixel) {
+  let number = Math.round(Math.random() * (4 - 1) + 1);
+
+  switch (number) {
+    case 1:
+      pixel.style.backgroundColor = "#E7EFC7";
+      break;
+    case 2:
+      pixel.style.backgroundColor = "#AEC8A4";
+      break;
+    case 3:
+      pixel.style.backgroundColor = "#537D5D";
+      break;
+    case 4:
+      pixel.style.backgroundColor = "#B2CD9C";
+      break;
+  }
+}
+
 function setPixelRainbow(pixel) {
   let number = Math.round(Math.random() * (7 - 1) + 1); // To get number between 1-7
 
@@ -131,25 +150,6 @@ function setPixelRainbow(pixel) {
       break;
     case 6:
       pixel.style.backgroundColor = "#bdb2ff";
-      break;
-  }
-}
-
-function setPixelNature(pixel) {
-  let number = Math.round(Math.random() * (4 - 1) + 1);
-
-  switch (number) {
-    case 1:
-      pixel.style.backgroundColor = "#E7EFC7";
-      break;
-    case 2:
-      pixel.style.backgroundColor = "#AEC8A4";
-      break;
-    case 3:
-      pixel.style.backgroundColor = "#CA7842";
-      break;
-    case 4:
-      pixel.style.backgroundColor = "#B2CD9C";
       break;
   }
 }
