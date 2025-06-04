@@ -39,6 +39,9 @@ pixels.forEach(pixel => {
   });
 });
 
+const resetButton = document.querySelector(".reset-button");
+resetButton.addEventListener('click', resetCanvas);
+
 function changePixelColor(pixel) {
   /**
    * Changes the Color of the Div
@@ -46,3 +49,8 @@ function changePixelColor(pixel) {
   pixel.style.backgroundColor = "blue";
 }
 
+function resetCanvas() {
+  for (pixel of pixels) {
+    pixel.style.backgroundColor = "brown";
+  }
+}
