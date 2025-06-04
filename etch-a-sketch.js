@@ -18,7 +18,7 @@ function setCanvasSize(pixelSize) {
       const pixel = document.createElement("div");
       pixel.style.width = canvasSize / pixelSize + "px";
       pixel.style.height = canvasSize / pixelSize + "px";
-      pixel.style.backgroundColor = "brown";
+      pixel.style.backgroundColor = "white";
       pixels.push(pixel);
       canvasContainer.appendChild(pixel);
     }
@@ -82,8 +82,6 @@ function callButtonListeners() {
   
   const colorPicker = document.querySelector(".color-picker");
   colorPicker.addEventListener('mouseout', () => {
-    console.log("YEET")
-    console.log(colorPicker.value);
     pixelColor = colorPicker.value;
     callDrawListeners();
   })
@@ -121,6 +119,6 @@ function setPixelRainbow(pixel) {
 
 function resetCanvas() {
   for (pixel of pixels) {
-    pixel.style.backgroundColor = "brown";
+    pixel.style.backgroundColor = "white";
   }
 };

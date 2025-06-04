@@ -18,14 +18,27 @@
     </div>
   </section>
 
-  <section class="canvas-options">
-    <button class="reset-button">clear</button>
-    <textarea class="change-input" placeholder="1-100"></textarea>
-    <button class="change-button">change canvas size</button>
-    <p class="change-message"></p>
-    <button class="rainbow-button">rainbow mode</button>
-    <button class="rainbow-button">monotone mode</button>
-    <input type="color" class="color-picker" value="#964B00">
+  <section id="options">
+    <p class="etch">Etch a Sketch</p>
+    <div class="canvas-options">
+      <img src="img/options.svg" alt="Options">
+      <div class="options-menu">
+        <div class="picker">
+          <div class="cover"></div>
+          <input type="color" class="color-picker" value="#FFE9CE">
+        </div>
+        
+        <button class="rainbow-button">Rainbow Mode</button>
+        <button class="monotone-button">Monotone Mode</button>
+        <button class="reset-button">Clear</button>
+        <div class="change-option">
+          <textarea class="change-input" placeholder="1-100"></textarea>
+          <button class="change-button">change size</button>
+        </div>
+        <p class="change-message"></p>
+      </div>
+    </div>
+    
   </section>
 </body>
 </html>
