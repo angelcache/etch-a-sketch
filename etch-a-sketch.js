@@ -104,6 +104,9 @@ function callButtonListeners() {
     pixelColor = colorPicker.value;
     callDrawListeners();
   })
+
+  music = document.querySelector(".speaker-icon")
+  music.addEventListener("click", playAudio);
 }
 
 function setPixelColor(pixel) {
@@ -200,5 +203,22 @@ function drawPixelMode(pixel) {
     setPixelRainbow(pixel);
   } else {
     setPixelMonotone(pixel);
+  }
+}
+
+function playAudio() {
+  audio = document.querySelector('.jazz-audio');
+  speakerIcon = document.querySelector('.speaker-icon')
+
+  audio.classList.toggle("music-on");
+
+  if (audio.classList.contains("music-on")) {
+    audio.play();
+    speakerIcon.setAttribute('src', "img/speaker-icon.png");
+    localStorage.setItem("music", "music-on");
+  } else {
+    audio.pause();
+    speakerIcon.setAttribute('src', "img/mute-icon.png");
+    localStorage.setItem("music", "");
   }
 }

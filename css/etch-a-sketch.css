@@ -10,21 +10,33 @@ body {
   align-items: center;
   position: relative;
   overflow-x: hidden;
+  min-height: 100vh;
   background: var(--background-color);
   background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
   background-repeat: repeat;
 }
 
-.github-icon {
+.speaker-icon,
+.github-icon,
+.github-icon img {
   position: absolute;
   width: 40px;
   height: auto;
+  cursor: pointer;
+}
+
+.speaker-icon {
   top: 10px;
   right: 10px;
 }
 
+.github-icon {
+  top: 10px;
+  right: 70px;
+}
+
 #canvas {
-  margin-top: 200px;
+  margin-top: 50px;
   display: inline-flex;
   position: relative;
 }
@@ -38,10 +50,6 @@ body {
   width: 400px;
   height: 500px;
   background-color: lightblue;
-}
-
-#options {
-  margin-top: 200px;
 }
 
 .etch {
