@@ -3,20 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="etch-a-sketch.css">
+  <title>Etch a Sketch</title>
+  <link rel="icon" href="img/paint.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/etch-a-sketch.css">
   <script src="etch-a-sketch.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
-  <section class="canvas-container"></section>
-
-  <section class="canvas-options">
-    <button class="reset-button">Reset</button>
-    <textarea class="change-input" placeholder="1-100"></textarea>
-    <button class="change-button">change canvas size</button>
-    <p class="change-message"></p>
-    <button class="rainbow-button">rainbow mode</button>
-    <input type="color" class="color-picker" value="#964B00">
+  <section id="canvas">
+    <img src="img/frame.svg" alt="Frame">
+    <div class="canvas-container">
+    </div>
   </section>
+
+  <section id="options">
+    <p class="etch">Etch a Sketch</p>
+    <div class="canvas-options">
+      <img src="img/options.svg" alt="Options">
+      <div class="options-menu">
+        <div class="picker">
+          <div class="cover"></div>
+          <input type="color" class="color-picker" value="#FFE9CE">
+        </div>
+        
+        <button class="nature-button">Nature Mode</button>
+        <button class="random-button">Random Mode</button>
+        <button class="reset-button">Clear</button>
+        <div class="change-option">
+          <textarea class="change-input" placeholder="1-100"></textarea>
+          <button class="change-button">change size</button>
+        </div>
+        <p class="change-message"></p>
+      </div>
+    </div>
+  </section>
+
+  <audio class="jazz-audio" src="audio/jazz.mp3" loop></audio>
+  <img class="speaker-icon" src="img/mute-icon.png" alt="Speaker Icon">
+
+  <a class="github-icon" target="_blank" href="https://github.com/angelcache/etch-a-sketch" rel="noopener noreferrer">
+    <img src="img/github.png" alt="Github Icon">
+  </a>
 </body>
 </html>

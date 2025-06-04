@@ -1,0 +1,170 @@
+* {
+  font-family: "Gamja Flower", Arial;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 100px;
+  align-items: center;
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background: var(--background-color);
+  background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
+  background-repeat: repeat;
+}
+
+.speaker-icon,
+.github-icon,
+.github-icon img {
+  position: absolute;
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+}
+
+.speaker-icon {
+  top: 10px;
+  right: 10px;
+}
+
+.github-icon {
+  top: 10px;
+  right: 70px;
+}
+
+#canvas {
+  margin-top: 50px;
+  display: inline-flex;
+  position: relative;
+}
+
+.canvas-container {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 36px;
+  top: 37px;
+  width: 400px;
+  height: 500px;
+  background-color: lightblue;
+}
+
+.etch {
+  color: var(--title-color);
+  font-size: 60px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+.canvas-options {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.canvas-options .options-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 400px;
+  height: 450px;
+  flex-direction: column;
+  position: absolute;
+}
+
+.nature-button,
+.random-button,
+.reset-button {
+  width: 200px;
+  font-size: 40px;
+  color: var(--default-color);
+  background-color: transparent;
+  border: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.nature-button:hover,
+.reset-button:hover {
+  color: var(--background-color);
+}
+
+.random-button:hover {
+  background: linear-gradient(
+    90deg,
+    #ffadad,
+    #ffd6a5,
+    #fdffb6,
+    #caffbf,
+    #9bf6ff,
+    #bdb2ff,
+    #ffc6ff
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.change-input {
+  border: none;
+  text-align: center;
+  color: var(--background-color);
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 5px 0;
+  width: 120px;
+  height: 20px;
+  resize: none;
+  outline: none;
+}
+
+.change-option {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.change-button {
+  color: var(--default-color);
+  width: 160px;
+  text-align: center;
+  font-size: 25px;
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.change-message {
+  color: var(--title-color);
+  padding: 0;
+}
+
+.color-picker {
+  outline: none;
+  outline: none;
+  box-shadow: none;
+  width: 250px;
+  height: 100px;
+  border-radius: 22px;
+}
+
+.picker {
+  position: relative;
+}
+
+.cover {
+  width: 230px;
+  height: 80px;
+  position: absolute;
+  border-radius: 20px;
+  border: 15px solid var(--menu-background-color);
+  pointer-events: none;
+}
