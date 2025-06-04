@@ -1,23 +1,31 @@
-// Generates the square
 const canvasContainer = document.querySelector(".canvas-container");
 const canvasSize = canvasContainer.offsetWidth;
-pixels = [];
-
-let pixelSize = 16;
+let pixels = [];
 let clicked = false;
 
-for (i = 1; i <= pixelSize; i++) {
-  for (j = 1; j <= pixelSize; j++) {
-    const pixel = document.createElement("div");
-    pixel.style.width = canvasSize / pixelSize + "px";
-    pixel.style.height = canvasSize / pixelSize + "px";
-    pixel.style.backgroundColor = "brown";
-    pixels.push(pixel);
-    canvasContainer.appendChild(pixel);
-  }
-};
+setCanvasSize(16);
+callDrawListeners();
+callButtonListeners();
 
-pixels.forEach(pixel => {
+function setCanvasSize(pixelSize) {
+  canvasContainer.innerHTML = "";
+  pixels = []
+
+  for (i = 1; i <= pixelSize; i++) {
+    for (j = 1; j <= pixelSize; j++) {
+      const pixel = document.createElement("div");
+      pixel.style.width = canvasSize / pixelSize + "px";
+      pixel.style.height = canvasSize / pixelSize + "px";
+      pixel.style.backgroundColor = "brown";
+      pixels.push(pixel);
+      canvasContainer.appendChild(pixel);
+    }
+  };
+  callDrawListeners();
+}
+
+function callDrawListeners() {
+  pixels.forEach(pixel => {
   // keeps track if user wants to colour multiple pixels
   pixel.addEventListener('mousedown', () => {
     clicked = true;
@@ -38,19 +46,33 @@ pixels.forEach(pixel => {
     }
   });
 });
+}
 
-const resetButton = document.querySelector(".reset-button");
-resetButton.addEventListener('click', resetCanvas);
+function callButtonListeners() {
+  const resetButton = document.querySelector(".reset-button");
+  resetButton.addEventListener('click', resetCanvas);
+  const changeSizeButton = document.querySelector(".change-button")
+  const inputSize = document.querySelector(".change-input");
+  const changeMessage = document.querySelector(".change-message");
+  changeSizeButton.addEventListener('click', () => {
+    let newSize = parseInt(inputSize.value);
+    if (!newSize) {
+      changeMessage.innerText = "Size be a number";
+    } else if (newSize < 0 || newSize > 100) {
+      changeMessage.innerText = "Size must be between 0-100 pixels"
+    } else {
+      changeMessage.innerText = "";
+      setCanvasSize(newSize);
+    }
+  });
+}
 
 function changePixelColor(pixel) {
-  /**
-   * Changes the Color of the Div
-   */
   pixel.style.backgroundColor = "blue";
-}
+};
 
 function resetCanvas() {
   for (pixel of pixels) {
     pixel.style.backgroundColor = "brown";
   }
-}
+};
