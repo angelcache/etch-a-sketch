@@ -27,6 +27,12 @@ function setCanvasSize(pixelSize) {
   callDrawListeners();
 }
 
+function resetCanvas() {
+  for (pixel of pixels) {
+    pixel.style.backgroundColor = "white";
+  }
+};
+
 function callDrawListeners() {
   pixels.forEach(pixel => {
   // keeps track if user wants to colour multiple pixels
@@ -39,21 +45,13 @@ function callDrawListeners() {
 
   // lets user color one pixel
   pixel.addEventListener('click', () => {
-    if (pixelMode == 'color') {
-        setPixelColor(pixel);
-      } else {
-        setPixelRainbow(pixel);
-      }
+    drawPixelMode(pixel);
   });
 
   // if user is pressing down and dragging (via clicked = true), colours divs
   pixel.addEventListener('mousemove', () => {
     if (clicked) {
-      if (pixelMode == 'color') {
-        setPixelColor(pixel);
-      } else {
-        setPixelRainbow(pixel);
-      }
+      drawPixelMode(pixel);
     }
   });
 });
@@ -76,12 +74,32 @@ function callButtonListeners() {
       setCanvasSize(newSize);
     }
   });
-  const rainbowButton = document.querySelector(".rainbow-button");
-  rainbowButton.addEventListener('click', () => {
-    pixelMode = 'rainbow';
+
+  const natureButton = document.querySelector(".nature-button");
+  natureButton.addEventListener('click', () => {
+    pixelMode = 'nature';
+  })
+
+  const randomButton = document.querySelector(".random-button");
+  randomButton.addEventListener('click', () => {
+    let number = Math.round(Math.random() * (3 - 1) + 1);
+    switch (number) {
+      case 1:
+        pixelMode = "gold";
+        break;
+      case 2:
+        pixelMode = "rainbow";
+        break;
+      case 3:
+        pixelMode = "monotone";
+        break;
+    }
   })
   
   const colorPicker = document.querySelector(".color-picker");
+  colorPicker.addEventListener('click', () => {
+    pixelMode = 'color';
+  })
   colorPicker.addEventListener('mouseout', () => {
     pixelColor = colorPicker.value;
     callDrawListeners();
@@ -93,33 +111,94 @@ function setPixelColor(pixel) {
 }
 
 function setPixelRainbow(pixel) {
-  let rainbowNumber = Math.round(Math.random() * (7 - 1) + 1); // To get number between 1-7
+  let number = Math.round(Math.random() * (7 - 1) + 1); // To get number between 1-7
 
-  console.log(rainbowNumber);
-  switch (rainbowNumber) {
+  switch (number) {
     case 1:
-      pixel.style.backgroundColor = "red";
+      pixel.style.backgroundColor = "#ffadad";
       break;
     case 2:
-      pixel.style.backgroundColor = "orange";
+      pixel.style.backgroundColor = "#ffd6a5";
       break;
     case 3:
-      pixel.style.backgroundColor = "yellow";
+      pixel.style.backgroundColor = "#fdffb6";
       break;
     case 4:
-      pixel.style.backgroundColor = "green";
+      pixel.style.backgroundColor = "#caffbf";
       break;
     case 5:
-      pixel.style.backgroundColor = "blue";
+      pixel.style.backgroundColor = "#9bf6ff";
       break;
     case 6:
-      pixel.style.backgroundColor = "purple";
+      pixel.style.backgroundColor = "#bdb2ff";
       break;
   }
 }
 
-function resetCanvas() {
-  for (pixel of pixels) {
-    pixel.style.backgroundColor = "white";
+function setPixelNature(pixel) {
+  let number = Math.round(Math.random() * (4 - 1) + 1);
+
+  switch (number) {
+    case 1:
+      pixel.style.backgroundColor = "#E7EFC7";
+      break;
+    case 2:
+      pixel.style.backgroundColor = "#AEC8A4";
+      break;
+    case 3:
+      pixel.style.backgroundColor = "#CA7842";
+      break;
+    case 4:
+      pixel.style.backgroundColor = "#B2CD9C";
+      break;
   }
-};
+}
+
+function setPixelMonotone(pixel) {
+  let number = Math.round(Math.random() * (3 - 1) + 1);
+
+  switch (number) {
+    case 1:
+      pixel.style.backgroundColor = "black";
+      break;
+    case 2:
+      pixel.style.backgroundColor = "lightgray";
+      break;
+    case 3:
+      pixel.style.backgroundColor = "gray";
+      break;
+  }
+}
+
+function setPixelGolden(pixel) {
+  let number = Math.round(Math.random() * (4 - 1) + 1);
+
+  switch (number) {
+    case 1:
+      pixel.style.backgroundColor = "#A86523";
+      break;
+    case 2:
+      pixel.style.backgroundColor = "#E9A319";
+      break;
+    case 3:
+      pixel.style.backgroundColor = "#FAD59A";
+      break;
+    case 4:
+      pixel.style.backgroundColor = "#FCEFCB";
+      break;
+  }
+}
+
+function drawPixelMode(pixel) {
+  if (pixelMode == 'color') {
+    setPixelColor(pixel);
+  } else if (pixelMode == 'nature') {
+    setPixelNature(pixel);
+  } else if (pixelMode == 'gold'){
+    setPixelGolden(pixel);
+  } else if (pixelMode == 'rainbow') {
+    setPixelRainbow(pixel);
+  } else {
+    setPixelMonotone(pixel);
+  }
+}
