@@ -1,6 +1,7 @@
 const canvasContainer = document.querySelector(".canvas-container");
 const canvasSize = canvasContainer.offsetWidth;
 let pixels = [];
+let pixelMode = 'color';
 let clicked = false;
 
 setCanvasSize(16);
@@ -36,13 +37,21 @@ function callDrawListeners() {
 
   // lets user color one pixel
   pixel.addEventListener('click', () => {
-    changePixelColor(pixel); 
+    if (pixelMode == 'color') {
+        setPixelColor(pixel);
+      } else {
+        setPixelRainbow(pixel);
+      }
   });
 
   // if user is pressing down and dragging (via clicked = true), colours divs
   pixel.addEventListener('mousemove', () => {
     if (clicked) {
-      changePixelColor(pixel);
+      if (pixelMode == 'color') {
+        setPixelColor(pixel);
+      } else {
+        setPixelRainbow(pixel);
+      }
     }
   });
 });
@@ -65,11 +74,41 @@ function callButtonListeners() {
       setCanvasSize(newSize);
     }
   });
+  const rainbowButton = document.querySelector(".rainbow-button");
+  rainbowButton.addEventListener('click', () => {
+    pixelMode = 'rainbow';
+  })
 }
 
-function changePixelColor(pixel) {
+function setPixelColor(pixel) {
   pixel.style.backgroundColor = "blue";
-};
+}
+
+function setPixelRainbow(pixel) {
+  let rainbowNumber = Math.round(Math.random() * (7 - 1) + 1); // To get number between 1-7
+
+  console.log(rainbowNumber);
+  switch (rainbowNumber) {
+    case 1:
+      pixel.style.backgroundColor = "red";
+      break;
+    case 2:
+      pixel.style.backgroundColor = "orange";
+      break;
+    case 3:
+      pixel.style.backgroundColor = "yellow";
+      break;
+    case 4:
+      pixel.style.backgroundColor = "green";
+      break;
+    case 5:
+      pixel.style.backgroundColor = "blue";
+      break;
+    case 6:
+      pixel.style.backgroundColor = "purple";
+      break;
+  }
+}
 
 function resetCanvas() {
   for (pixel of pixels) {
