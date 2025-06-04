@@ -1,6 +1,7 @@
 const canvasContainer = document.querySelector(".canvas-container");
 const canvasSize = canvasContainer.offsetWidth;
 let pixels = [];
+let pixelColor = 'black';
 let pixelMode = 'color';
 let clicked = false;
 
@@ -78,10 +79,18 @@ function callButtonListeners() {
   rainbowButton.addEventListener('click', () => {
     pixelMode = 'rainbow';
   })
+  
+  const colorPicker = document.querySelector(".color-picker");
+  colorPicker.addEventListener('mouseout', () => {
+    console.log("YEET")
+    console.log(colorPicker.value);
+    pixelColor = colorPicker.value;
+    callDrawListeners();
+  })
 }
 
 function setPixelColor(pixel) {
-  pixel.style.backgroundColor = "blue";
+  pixel.style.backgroundColor = pixelColor;
 }
 
 function setPixelRainbow(pixel) {
