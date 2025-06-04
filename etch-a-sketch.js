@@ -1,49 +1,48 @@
 // Generates the square
-const divContainer = document.querySelector(".grid-container");
-const containerSize = divContainer.offsetWidth;
-divs = [];
+const canvasContainer = document.querySelector(".canvas-container");
+const canvasSize = canvasContainer.offsetWidth;
+pixels = [];
 
-let squareSize = 16;
+let pixelSize = 16;
 let clicked = false;
 
-for (i = 1; i <= squareSize; i++) {
-  for (j = 1; j <= squareSize; j++) {
-    const div = document.createElement("div");
-    div.style.width = containerSize / squareSize + "px";
-    div.style.height = containerSize / squareSize + "px";
-    div.style.backgroundColor = "brown";
-    divs.push(div);
-    divContainer.appendChild(div);
+for (i = 1; i <= pixelSize; i++) {
+  for (j = 1; j <= pixelSize; j++) {
+    const pixel = document.createElement("div");
+    pixel.style.width = canvasSize / pixelSize + "px";
+    pixel.style.height = canvasSize / pixelSize + "px";
+    pixel.style.backgroundColor = "brown";
+    pixels.push(pixel);
+    canvasContainer.appendChild(pixel);
   }
 };
 
-
-divs.forEach(div => {
-
-  // keeps track if user wants to colour multiple divs
-  div.addEventListener('mousedown', () => {
+pixels.forEach(pixel => {
+  // keeps track if user wants to colour multiple pixels
+  pixel.addEventListener('mousedown', () => {
     clicked = true;
   })
-  div.addEventListener('mouseup', () => {
+  pixel.addEventListener('mouseup', () => {
     clicked = false;
   })
 
-  // lets user color one div
-  div.addEventListener('click', () => {
-    changeDivColor(div); 
+  // lets user color one pixel
+  pixel.addEventListener('click', () => {
+    changePixelColor(pixel); 
   });
 
   // if user is pressing down and dragging (via clicked = true), colours divs
-  div.addEventListener('mousemove', () => {
+  pixel.addEventListener('mousemove', () => {
     if (clicked) {
-      changeDivColor(div);
+      changePixelColor(pixel);
     }
   });
 });
 
-function changeDivColor(div) {
+function changePixelColor(pixel) {
   /**
    * Changes the Color of the Div
    */
-  div.style.backgroundColor = "blue";
+  pixel.style.backgroundColor = "blue";
 }
+
