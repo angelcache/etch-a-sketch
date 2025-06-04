@@ -43,6 +43,14 @@ function callDrawListeners() {
     clicked = false;
   })
 
+  pixel.addEventListener('mouseenter', () => {
+    document.body.style.cursor = "url('img/brush.png') 4 28, pointer";
+  })
+
+  pixel.addEventListener('mouseleave', () => {
+    document.body.style.cursor = "auto";
+  })
+
   // lets user color one pixel
   pixel.addEventListener('click', () => {
     drawPixelMode(pixel);
