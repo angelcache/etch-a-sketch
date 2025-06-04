@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="etch-a-sketch.css">
+  <title>Etch a Sketch</title>
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/etch-a-sketch.css">
   <script src="etch-a-sketch.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
-  <section class="canvas-container"></section>
+  <section id="canvas">
+    <img src="img/frame.svg" alt="Frame">
+    <div class="canvas-container">
+    </div>
+  </section>
 
   <section class="canvas-options">
-    <button class="reset-button">Reset</button>
+    <button class="reset-button">clear</button>
     <textarea class="change-input" placeholder="1-100"></textarea>
     <button class="change-button">change canvas size</button>
     <p class="change-message"></p>
     <button class="rainbow-button">rainbow mode</button>
+    <button class="rainbow-button">monotone mode</button>
     <input type="color" class="color-picker" value="#964B00">
   </section>
 </body>
