@@ -1,5 +1,6 @@
 const canvasContainer = document.querySelector(".canvas-container");
-const canvasSize = canvasContainer.offsetWidth;
+const canvasWidth = canvasContainer.offsetWidth;
+const canvasHeight = canvasContainer.offsetHeight;
 let pixels = [];
 let pixelColor = 'black';
 let pixelMode = 'color';
@@ -16,8 +17,8 @@ function setCanvasSize(pixelSize) {
   for (i = 1; i <= pixelSize; i++) {
     for (j = 1; j <= pixelSize; j++) {
       const pixel = document.createElement("div");
-      pixel.style.width = canvasSize / pixelSize + "px";
-      pixel.style.height = canvasSize / pixelSize + "px";
+      pixel.style.width = canvasWidth / pixelSize + "px";
+      pixel.style.height = canvasHeight / pixelSize + "px";
       pixel.style.backgroundColor = "white";
       pixels.push(pixel);
       canvasContainer.appendChild(pixel);
