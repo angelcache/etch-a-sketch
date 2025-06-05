@@ -54,7 +54,7 @@ body {
   top: 37px;
   width: 400px;
   height: 500px;
-  background-color: lightblue;
+  background-color: var(--default-color);
 }
 
 .etch {
