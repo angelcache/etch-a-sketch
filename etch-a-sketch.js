@@ -6,9 +6,27 @@ let pixelColor = '#FFE9CE';
 let pixelMode = 'color';
 let clicked = false;
 
-setCanvasSize(16);
-callDrawListeners();
-callButtonListeners();
+startEtchASketch();
+
+async function startEtchASketch() {
+  await setCanvasArt();
+  callDrawListeners();
+  callButtonListeners();
+}
+
+async function setCanvasArt() {
+  // Ensures we wait for canvas to be fetched before calling listeners
+  const response = await fetch("drawing/draw.txt");
+  const html = await response.text();
+
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = html;
+
+  const divs = tempDiv.querySelectorAll('div');
+  pixels = Array.from(divs);
+
+  pixels.forEach(pixel => canvasContainer.appendChild(pixel));
+}
 
 function setCanvasSize(pixelSize) {
   canvasContainer.innerHTML = "";
@@ -24,7 +42,6 @@ function setCanvasSize(pixelSize) {
       canvasContainer.appendChild(pixel);
     }
   };
-  callDrawListeners();
 }
 
 function resetCanvas() {
@@ -34,6 +51,7 @@ function resetCanvas() {
 };
 
 function callDrawListeners() {
+  console.log("EY");
   pixels.forEach(pixel => {
   // keeps track if user wants to colour multiple pixels
   pixel.addEventListener('mousedown', () => {
