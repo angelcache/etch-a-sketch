@@ -20,3 +20,7 @@ Created a sketching game using JavaScript, HTML, and CSS. Users can draw by hove
 - Event listeners (click, input, mouseover, etc.)
 - Dynamically changing pixel/grid sizes
 - Practiced using Flexbox for layout responsiveness
+
+## 🖼️ Preview
+
+![Screenshot](./img/etch-a-sketch.png)
