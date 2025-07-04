@@ -21,6 +21,10 @@ body {
   background-repeat: repeat;
 }
 
+textarea {
+  overflow: hidden;
+}
+
 .speaker-icon,
 .github-icon,
 .github-icon img {
